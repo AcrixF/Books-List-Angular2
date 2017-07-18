@@ -1,0 +1,91 @@
+
+<h3 class="title"> Books List</h3>
+<div class="border-divider"></div>
+<div class="row">
+  <div class="col-xs-3">
+
+    <!-- Left Side -->
+
+    <ul class="list">
+      <li class="list-item" *ngFor="let book of booksList" (click)="getBookDetails( book.isbn )">
+        <div class="cover-image-container">
+      <span class="cover-image">
+        <img [src]=" book.coverImage" alt="cover image"/>
+      </span>
+        </div>
+        <div class="clear">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <h4 class="book-author">{{ book.authors }}</h4>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!--Rigth Side-->
+  <div class="col-xs-9">
+    <app-book-details [book]="selectedBook" (onDelete)="deleteBook($event)"></app-book-details>
+  </div>
+</div>
+
+<app-book-search></app-book-search>
+
+
+
+
+
+<!--
+    <h1 [textContent]="message"></h1>
+    <input type="text" [value]="message">
+
+    <h1> {{ message }}</h1>
+    <input type="text" [value]="message" (keypress)="showMessages($event)">
+
+    <h1> {{ message }}</h1>
+    <input type="text" [value]="message" on-keypress="showMessages($event)">
+
+<p> {{ message }}</p>
+<input type="text" [(ngModel)]="message">
+
+<h1>Structural directives</h1>
+
+<div *ngIf="isReady">
+  <h1>Structural Directives</h1>
+  <p>They lets us modify DOM structure</p>
+</div>
+
+
+<ul>
+  <li *ngFor=" let framework of frameworks">
+    {{ framework }}
+  </li>
+</ul>
+
+
+<div [ngSwitch]="selectedCar">
+  <ng-template [ngSwitchCase]="'Bugatti'">I am Bugatti</ng-template>
+  <ng-template [ngSwitchCase]="'Mustang'">I am Mustang</ng-template>
+  <ng-template [ngSwitchCase]="'Ferrari'">I am Ferrari</ng-template>
+  <ng-template ngSwitchDefault>I am somebody else</ng-template>
+</div>
+
+<h1>Attribute directives</h1>
+<ul>
+  <li *ngFor="let framework of frameworks">
+    <p [ngStyle]="getInlineStyles(framework)">{{ framework }}</p>
+  </li>
+</ul>
+
+<hr>
+<ul>
+  <li *ngFor="let framework of frameworks">
+    <p [style.color] = "framework.length > 3 ? 'blue' : 'green'"> {{ framework }}</p>
+  </li>
+</ul>
+-->
+
+
+
+
+
+
+

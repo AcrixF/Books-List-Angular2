@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manually creating an Observable</title>
+</head>
+
+  <body>
+      <script>
+
+        var Rx = require('rxjs/Rx');
+
+        const observable = Rx.Observable.create( observer => {
+            observer.next(1);
+            observer.next(2);
+
+            setTimeout(() => {
+                observer.next(3);
+                observer.next(4);
+                observer.complete();
+            }, 1000);
+
+            observer.netx(5);
+
+            console.log('Before subscribe');
+
+            observable.subscribe({
+                next: val => console.log(`Got value ${val}`),
+                error: err => console.log(`Something went wrong ${err}`),
+                complete: () => console.log('I am done')
+            });
+            console.log('After subscribe');
+        });
+
+      </script>
+
+      <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+      <script src="https://unpkg.com/rxjs/bundles/Rx.min.js"></script>
+  </body>
+
+</html>
